@@ -21,6 +21,11 @@ namespace KataBankAccount
                 _transactionRepository.AddDeposit(amount);
         }
 
+        public void Withdraw(int amount)
+        {
+            if (_transactionRepository.GetBallance() > amount)
+                _transactionRepository.AddWithdrawal(amount);
+        }
         public void PrintStatement() => _statementPrinter.PrintResult(_transactionRepository.GetAll());
     }
 }
